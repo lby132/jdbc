@@ -34,8 +34,6 @@ public class MemberServiceV3_1 {
         } catch (Exception e) {
             transactionManager.rollback(status); // 실패시 롤백
             throw new IllegalStateException(e);
-        } finally {
-        //    release(con); 트랜잭션 매니저가 알아서 종료시켜주기때문에 직접 닫아주지 않아도 됨
         }
     }
 
@@ -48,16 +46,6 @@ public class MemberServiceV3_1 {
         repository.update(toId, toMember.getMoney() + money);
     }
 
-    /*private void release(Connection con) {
-        if (con != null) {
-            try {
-                con.setAutoCommit(true);
-                con.close();
-            } catch (Exception e) {
-                log.info("error", e);
-            }
-        }
-    }*/
 
     private void validation(Member toMember) {
         if (toMember.getMemberId().equals("ex")) {
