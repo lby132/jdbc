@@ -96,6 +96,5 @@ public class ExTranslatorV1Test {
                 JdbcUtils.closeConnection(con);
             }
         }
-
     }
 }
